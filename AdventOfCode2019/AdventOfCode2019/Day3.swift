@@ -8,10 +8,6 @@
 
 import Foundation
 class Day3 {
-    var hasBeenCrossedYet:[[Bool]] = Array(repeating: Array(repeating: false, count: 100000), count: 100000)
-    var numberOfSteps:[[Int]] = Array(repeating: Array(repeating: 0, count: 100000), count: 100000)
-    var currentPoint: (Int, Int) = (50000,50000)
-    
     func main() {
         let pattern = #"(\D)(\d+)"#
         let wire1 = Parser.arrayOfArrayOfStrings(from: "day_3_a", with: pattern, numberOfCaptures: 2)
@@ -21,174 +17,69 @@ class Day3 {
     }
     
     func part1(wire1: [[String]], wire2:[[String]]) {
-        for array in wire1 {
-            let direction = array[0]
-            let magnitude = Int(array[1])!
-            switch direction {
-            case "R":
-                for _ in 1...magnitude {
-                    self.currentPoint.0 += 1
-                    self.hasBeenCrossedYet[self.currentPoint.0][self.currentPoint.1] = true
-                }
-            case "L":
-                for _ in 1...magnitude {
-                    self.currentPoint.0 -= 1
-                    self.hasBeenCrossedYet[self.currentPoint.0][self.currentPoint.1] = true
-                }
-            case "U":
-                for _ in 1...magnitude {
-                    self.currentPoint.1 += 1
-                    self.hasBeenCrossedYet[self.currentPoint.0][self.currentPoint.1] = true
-                }
-            case "D":
-                for _ in 1...magnitude {
-                    self.currentPoint.1 -= 1
-                    self.hasBeenCrossedYet[self.currentPoint.0][self.currentPoint.1] = true
-                }
-            default:
-                break
+        let hasBeenCrossedYet:SquareGrid<Bool> = SquareGrid<Bool>(length: 100000, defaultValue: false, origin: Point(x: 50000, y: 50000), startingPoint: Point(x: 50000, y: 50000))
+        for velocity in wire1 {
+            let direction = velocity[0]
+            let magnitude = Int(velocity[1])!
+            for _ in 1...magnitude {
+                hasBeenCrossedYet.moveOne(inDirection: direction)
+                hasBeenCrossedYet.setValueAtCurrentPoint(true)
             }
         }
-        var intersections:[(Int, Int)] = []
-        self.currentPoint = (50000, 50000)
-        for array in wire2 {
-            let direction = array[0]
-            let magnitude = Int(array[1])!
-            switch direction {
-            case "R":
-                for _ in 1...magnitude {
-                    self.currentPoint.0 += 1
-                    if self.hasBeenCrossedYet[self.currentPoint.0][self.currentPoint.1] {
-                        intersections.append(self.currentPoint)
-                    }
+        var intersections:[Point] = []
+        hasBeenCrossedYet.resetToStartingPoint()
+        var closestDistance = 100000000000000000
+        for velocity in wire2 {
+            let direction = velocity[0]
+            let magnitude = Int(velocity[1])!
+            for _ in 1...magnitude {
+                hasBeenCrossedYet.moveOne(inDirection: direction)
+                if hasBeenCrossedYet.valueAtCurrentPoint() {
+                    intersections.append(hasBeenCrossedYet.currentPoint)
                 }
-            case "L":
-                for _ in 1...magnitude {
-                    self.currentPoint.0 -= 1
-                    if self.hasBeenCrossedYet[self.currentPoint.0][self.currentPoint.1] {
-                        intersections.append(self.currentPoint)
-                    }
-                }
-            case "U":
-                for _ in 1...magnitude {
-                    self.currentPoint.1 += 1
-                    if self.hasBeenCrossedYet[self.currentPoint.0][self.currentPoint.1] {
-                        intersections.append(self.currentPoint)
-                    }
-                }
-            case "D":
-                for _ in 1...magnitude {
-                    self.currentPoint.1 -= 1
-                    if self.hasBeenCrossedYet[self.currentPoint.0][self.currentPoint.1] {
-                        intersections.append(self.currentPoint)
-                    }
-                }
-            default:
-                break
             }
         }
-        var maxDistance = 100000000000000000
         for point in intersections {
-            let distance = abs(point.0 - 50000) + abs(point.1 - 50000)
-            if distance < maxDistance {
-                maxDistance = distance
+            let distance = hasBeenCrossedYet.manhattanDistanceToOrigin(from: point)
+            if distance < closestDistance {
+                closestDistance = distance
             }
         }
-        print("⏰ Day 3 Part 1: Closest Distance: \(maxDistance)")
+        print("⏰ Day 3 Part 1: Closest Distance: \(closestDistance)")
     }
     
     func part2(wire1: [[String]], wire2:[[String]]) {
-        self.currentPoint = (50000, 50000)
+        let numberOfSteps:SquareGrid<Int> = SquareGrid<Int>(length: 100000, defaultValue: 0, origin: Point(x: 50000, y: 50000), startingPoint: Point(x: 50000, y: 50000))
         var stepsTraveled = 0
-        for array in wire1 {
-            let direction = array[0]
-            let magnitude = Int(array[1])!
-            switch direction {
-            case "R":
-                for _ in 1...magnitude {
-                    self.currentPoint.0 += 1
-                    stepsTraveled += 1
-                    self.numberOfSteps[self.currentPoint.0][self.currentPoint.1] = stepsTraveled
-                }
-            case "L":
-                for _ in 1...magnitude {
-                    self.currentPoint.0 -= 1
-                    stepsTraveled += 1
-                    self.numberOfSteps[self.currentPoint.0][self.currentPoint.1] = stepsTraveled
-                }
-            case "U":
-                for _ in 1...magnitude {
-                    self.currentPoint.1 += 1
-                    stepsTraveled += 1
-                    self.numberOfSteps[self.currentPoint.0][self.currentPoint.1] = stepsTraveled
-                }
-            case "D":
-                for _ in 1...magnitude {
-                    self.currentPoint.1 -= 1
-                    stepsTraveled += 1
-                    self.numberOfSteps[self.currentPoint.0][self.currentPoint.1] = stepsTraveled
-                }
-            default:
-                break
+        for velocity in wire1 {
+            let direction = velocity[0]
+            let magnitude = Int(velocity[1])!
+            for _ in 1...magnitude {
+                stepsTraveled += 1
+                numberOfSteps.moveOne(inDirection: direction)
+                let oldSteps = numberOfSteps.valueAtCurrentPoint()
+                guard oldSteps == 0 else { continue }
+                numberOfSteps.setValueAtCurrentPoint(stepsTraveled)
             }
         }
         var shortestDistance = 100000000000000000
-        self.currentPoint = (50000, 50000)
+        numberOfSteps.resetToStartingPoint()
         stepsTraveled = 0
-        for array in wire2 {
-            let direction = array[0]
-            let magnitude = Int(array[1])!
-            switch direction {
-            case "R":
-                for _ in 1...magnitude {
-                    self.currentPoint.0 += 1
-                    stepsTraveled += 1
-                    let oldSteps = self.numberOfSteps[self.currentPoint.0][self.currentPoint.1]
-                    if oldSteps > 0 {
-                        let totalDistance = oldSteps + stepsTraveled
-                        if shortestDistance > totalDistance {
-                            shortestDistance = totalDistance
-                        }
-                    }
+        for velocity in wire2 {
+            let direction = velocity[0]
+            let magnitude = Int(velocity[1])!
+            for _ in 1...magnitude {
+                stepsTraveled += 1
+                if shortestDistance < stepsTraveled {
+                    break
                 }
-            case "L":
-                for _ in 1...magnitude {
-                    self.currentPoint.0 -= 1
-                    stepsTraveled += 1
-                    let oldSteps = self.numberOfSteps[self.currentPoint.0][self.currentPoint.1]
-                    if oldSteps > 0 {
-                        let totalDistance = oldSteps + stepsTraveled
-                        if shortestDistance > totalDistance {
-                            shortestDistance = totalDistance
-                        }
-                    }
+                numberOfSteps.moveOne(inDirection: direction)
+                let oldSteps = numberOfSteps.valueAtCurrentPoint()
+                guard oldSteps > 0 else { continue }
+                let totalDistance = oldSteps + stepsTraveled
+                if shortestDistance > totalDistance {
+                    shortestDistance = totalDistance
                 }
-            case "U":
-                for _ in 1...magnitude {
-                    self.currentPoint.1 += 1
-                    stepsTraveled += 1
-                    let oldSteps = self.numberOfSteps[self.currentPoint.0][self.currentPoint.1]
-                    if oldSteps > 0 {
-                        let totalDistance = oldSteps + stepsTraveled
-                        if shortestDistance > totalDistance {
-                            shortestDistance = totalDistance
-                        }
-                    }
-                }
-            case "D":
-                for _ in 1...magnitude {
-                    self.currentPoint.1 -= 1
-                    stepsTraveled += 1
-                    let oldSteps = self.numberOfSteps[self.currentPoint.0][self.currentPoint.1]
-                    if oldSteps > 0 {
-                        let totalDistance = oldSteps + stepsTraveled
-                        if shortestDistance > totalDistance {
-                            shortestDistance = totalDistance
-                        }
-                    }
-                }
-            default:
-                break
             }
         }
         print("⏰ Day 3 Part 2: Shortest Distance: \(shortestDistance)")
