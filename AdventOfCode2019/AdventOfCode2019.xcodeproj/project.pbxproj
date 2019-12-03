@@ -19,6 +19,9 @@
 		C396FB752395CD8B00D99297 /* Day2.swift in Sources */ = {isa = PBXBuildFile; fileRef = C396FB742395CD8B00D99297 /* Day2.swift */; };
 		C396FB792395CE4C00D99297 /* Day2_input.swift in Sources */ = {isa = PBXBuildFile; fileRef = C396FB782395CE4C00D99297 /* Day2_input.swift */; };
 		C396FB7C2395F00E00D99297 /* Computer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C396FB7B2395F00E00D99297 /* Computer.swift */; };
+		C396FB7E239623DC00D99297 /* Day3.swift in Sources */ = {isa = PBXBuildFile; fileRef = C396FB7D239623DC00D99297 /* Day3.swift */; };
+		C396FB812396247C00D99297 /* day_3_a.txt in Resources */ = {isa = PBXBuildFile; fileRef = C396FB7F2396247B00D99297 /* day_3_a.txt */; };
+		C396FB822396247C00D99297 /* day_3_b.txt in Resources */ = {isa = PBXBuildFile; fileRef = C396FB802396247B00D99297 /* day_3_b.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +39,9 @@
 		C396FB742395CD8B00D99297 /* Day2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day2.swift; sourceTree = "<group>"; };
 		C396FB782395CE4C00D99297 /* Day2_input.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day2_input.swift; sourceTree = "<group>"; };
 		C396FB7B2395F00E00D99297 /* Computer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Computer.swift; sourceTree = "<group>"; };
+		C396FB7D239623DC00D99297 /* Day3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day3.swift; sourceTree = "<group>"; };
+		C396FB7F2396247B00D99297 /* day_3_a.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = day_3_a.txt; sourceTree = "<group>"; };
+		C396FB802396247B00D99297 /* day_3_b.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = day_3_b.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +80,9 @@
 				C396FB722395CA2100D99297 /* day1.txt */,
 				C396FB742395CD8B00D99297 /* Day2.swift */,
 				C396FB782395CE4C00D99297 /* Day2_input.swift */,
+				C396FB7D239623DC00D99297 /* Day3.swift */,
+				C396FB7F2396247B00D99297 /* day_3_a.txt */,
+				C396FB802396247B00D99297 /* day_3_b.txt */,
 				C396FB5C2395979B00D99297 /* SceneDelegate.swift */,
 				C396FB5E2395979B00D99297 /* ContentView.swift */,
 				C396FB602395979D00D99297 /* Assets.xcassets */,
@@ -159,7 +168,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C396FB812396247C00D99297 /* day_3_a.txt in Resources */,
 				C396FB672395979D00D99297 /* LaunchScreen.storyboard in Resources */,
+				C396FB822396247C00D99297 /* day_3_b.txt in Resources */,
 				C396FB732395CA2100D99297 /* day1.txt in Resources */,
 				C396FB642395979D00D99297 /* Preview Assets.xcassets in Resources */,
 				C396FB612395979D00D99297 /* Assets.xcassets in Resources */,
@@ -180,6 +191,7 @@
 				C396FB71239597D000D99297 /* Day1.swift in Sources */,
 				C396FB5B2395979B00D99297 /* AppDelegate.swift in Sources */,
 				C396FB5D2395979B00D99297 /* SceneDelegate.swift in Sources */,
+				C396FB7E239623DC00D99297 /* Day3.swift in Sources */,
 				C396FB5F2395979B00D99297 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

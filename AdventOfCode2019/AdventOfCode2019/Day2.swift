@@ -8,23 +8,19 @@
 
 import Foundation
 class Day2 {
-    var input:[Int] = []
-    
+
     func main() {
         var memory:[Int] = []
         for char in day_2_input.split(separator: ",") {
             memory.append(Int(String(char))!)
         }
-        memory[1] = 12
-        memory[2] = 2
-        
-        self.input = memory
         self.part1(input: memory)
         self.part2(input: memory)
     }
     
     func part1(input:[Int]) {
         let computer = Computer(input: input)
+        computer.resetAndChangeInput(first: 12, second: 2)
         let result = computer.run()
         print("🕹 Day 2 Part 1 Total: \(result)")
     }

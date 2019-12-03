@@ -15,12 +15,15 @@ class Computer {
         return self.input
     }()
     
+    private var currentAddress: Int = 0
+    
     init(input:[Int]) {
         self.input = input
     }
     
     func reset() {
         self.currentMemory = input
+        self.currentAddress = 0
     }
     
     func resetAndChangeInput(first: Int, second: Int) {
@@ -30,25 +33,24 @@ class Computer {
     }
     
     func run() -> Int {
-        var currentOpCodeIndex = 0
-        while true {
-            let currentOpCode = self.input[currentOpCodeIndex]
-            if currentOpCode == 1 {
-                self.opcode1(currentOpCodeIndex)
-                currentOpCodeIndex += 4
-            } else if currentOpCode == 2 {
-                self.opcode2(currentOpCodeIndex)
-                currentOpCodeIndex += 4
-            } else if currentOpCode == 99 {
-                break
-            } else {
-              print("wut")
+        mainLoop: while true {
+            let instruction = self.currentMemory[self.currentAddress]
+            switch instruction {
+            case 1:
+                self.opcode1()
+            case 2:
+                self.opcode2()
+            case 99:
+                break mainLoop
+            default:
+                print("wut: \(instruction)")
             }
         }
         return self.currentMemory[0]
     }
     
-    private func opcode1(_ currentIndex: Int) {
+    private func opcode1() {
+        let currentIndex = self.currentAddress
         let firstIndex = currentIndex + 1
         let secondIndex = currentIndex + 2
         let thirdIndex = currentIndex + 3
@@ -58,9 +60,11 @@ class Computer {
         let secondValue = self.currentMemory[secondValueIndex]
         let resultIndex = self.currentMemory[thirdIndex]
         self.currentMemory[resultIndex] = firstValue + secondValue
+        self.currentAddress = currentIndex + 4
     }
     
-    private func opcode2(_ currentIndex: Int) {
+    private func opcode2() {
+        let currentIndex = self.currentAddress
         let firstIndex = currentIndex + 1
         let secondIndex = currentIndex + 2
         let thirdIndex = currentIndex + 3
@@ -70,5 +74,6 @@ class Computer {
         let secondValue = self.currentMemory[secondValueIndex]
         let resultIndex = self.currentMemory[thirdIndex]
         self.currentMemory[resultIndex] = firstValue * secondValue
+        self.currentAddress = currentIndex + 4
     }
 }
