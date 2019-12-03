@@ -17,7 +17,7 @@ class Day3 {
     }
     
     func part1(wire1: [[String]], wire2:[[String]]) {
-        let hasBeenCrossedYet:SquareGrid<Bool> = SquareGrid<Bool>(length: 100000, defaultValue: false, origin: Point(x: 50000, y: 50000), startingPoint: Point(x: 50000, y: 50000))
+        let hasBeenCrossedYet:SquareGrid<Bool> = SquareGrid<Bool>(origin: Point(x: 50000, y: 50000), startingPoint: Point(x: 50000, y: 50000))
         for velocity in wire1 {
             let direction = velocity[0]
             let magnitude = Int(velocity[1])!
@@ -26,7 +26,6 @@ class Day3 {
                 hasBeenCrossedYet.setValueAtCurrentPoint(true)
             }
         }
-        var intersections:[Point] = []
         hasBeenCrossedYet.resetToStartingPoint()
         var closestDistance = 100000000000000000
         for velocity in wire2 {
@@ -34,22 +33,19 @@ class Day3 {
             let magnitude = Int(velocity[1])!
             for _ in 1...magnitude {
                 hasBeenCrossedYet.moveOne(inDirection: direction)
-                if hasBeenCrossedYet.valueAtCurrentPoint() {
-                    intersections.append(hasBeenCrossedYet.currentPoint)
+                if let hasCrossed = hasBeenCrossedYet.valueAtCurrentPoint(), hasCrossed {
+                    let distance = hasBeenCrossedYet.manhattanDistanceToOrigin(from: hasBeenCrossedYet.currentPoint)
+                    if distance < closestDistance {
+                        closestDistance = distance
+                    }
                 }
-            }
-        }
-        for point in intersections {
-            let distance = hasBeenCrossedYet.manhattanDistanceToOrigin(from: point)
-            if distance < closestDistance {
-                closestDistance = distance
             }
         }
         print("⏰ Day 3 Part 1: Closest Distance: \(closestDistance)")
     }
     
     func part2(wire1: [[String]], wire2:[[String]]) {
-        let numberOfSteps:SquareGrid<Int> = SquareGrid<Int>(length: 100000, defaultValue: 0, origin: Point(x: 50000, y: 50000), startingPoint: Point(x: 50000, y: 50000))
+        let numberOfSteps:SquareGrid<Int> = SquareGrid<Int>(origin: Point(x: 50000, y: 50000), startingPoint: Point(x: 50000, y: 50000))
         var stepsTraveled = 0
         for velocity in wire1 {
             let direction = velocity[0]
@@ -57,8 +53,7 @@ class Day3 {
             for _ in 1...magnitude {
                 stepsTraveled += 1
                 numberOfSteps.moveOne(inDirection: direction)
-                let oldSteps = numberOfSteps.valueAtCurrentPoint()
-                guard oldSteps == 0 else { continue }
+                guard numberOfSteps.valueAtCurrentPoint() == nil else { continue }
                 numberOfSteps.setValueAtCurrentPoint(stepsTraveled)
             }
         }
@@ -74,8 +69,8 @@ class Day3 {
                     break
                 }
                 numberOfSteps.moveOne(inDirection: direction)
-                let oldSteps = numberOfSteps.valueAtCurrentPoint()
-                guard oldSteps > 0 else { continue }
+                
+                guard let oldSteps = numberOfSteps.valueAtCurrentPoint(), oldSteps > 0 else { continue }
                 let totalDistance = oldSteps + stepsTraveled
                 if shortestDistance > totalDistance {
                     shortestDistance = totalDistance

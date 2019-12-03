@@ -29,8 +29,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             self.window = window
             window.makeKeyAndVisible()
         }
-        Day1().main()
-        Day2().main()
+//        Day1().main()
+//        Day2().main()
         Day3().main()
     }
 

@@ -8,20 +8,15 @@
 
 import Foundation
 class SquareGrid<T> {
-    private var grid: [[T]]
+    private var grid: [Point:T] = [:]
     private let origin: Point
     private(set) var currentPoint: Point
     private let startingPoint: Point
-    private let defaultValue: T
-    private let length: Int
     
-    init(length: Int, defaultValue: T, origin: Point, startingPoint: Point) {
-        self.grid = Array(repeating: Array(repeating: defaultValue, count: length), count: length)
-        self.defaultValue = defaultValue
+    init(origin: Point, startingPoint: Point) {
         self.origin = origin
         self.startingPoint = startingPoint
         self.currentPoint = startingPoint
-        self.length = length
     }
     
     func moveOne(inDirection direction: String) {
@@ -39,12 +34,12 @@ class SquareGrid<T> {
         }
     }
     
-    func valueAtCurrentPoint() -> T {
-        return self.grid[self.currentPoint.x][self.currentPoint.y]
+    func valueAtCurrentPoint() -> T? {
+        return self.grid[self.currentPoint]
     }
     
     func setValueAtCurrentPoint(_ value: T) {
-        self.grid[self.currentPoint.x][self.currentPoint.y] = value
+        self.grid[self.currentPoint] = value
     }
     
     func resetToStartingPoint() {
