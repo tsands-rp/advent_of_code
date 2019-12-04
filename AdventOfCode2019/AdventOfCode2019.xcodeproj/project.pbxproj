@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		C368467F2396BCA2008976AF /* SquareGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = C368467E2396BCA2008976AF /* SquareGrid.swift */; };
 		C36846812396BCB4008976AF /* Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36846802396BCB4008976AF /* Point.swift */; };
+		C3684683239774C4008976AF /* Day4.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3684682239774C4008976AF /* Day4.swift */; };
 		C396FB5B2395979B00D99297 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C396FB5A2395979B00D99297 /* AppDelegate.swift */; };
 		C396FB5D2395979B00D99297 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C396FB5C2395979B00D99297 /* SceneDelegate.swift */; };
 		C396FB5F2395979B00D99297 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C396FB5E2395979B00D99297 /* ContentView.swift */; };
@@ -29,6 +30,7 @@
 /* Begin PBXFileReference section */
 		C368467E2396BCA2008976AF /* SquareGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquareGrid.swift; sourceTree = "<group>"; };
 		C36846802396BCB4008976AF /* Point.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Point.swift; sourceTree = "<group>"; };
+		C3684682239774C4008976AF /* Day4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day4.swift; sourceTree = "<group>"; };
 		C396FB572395979B00D99297 /* AdventOfCode2019.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AdventOfCode2019.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C396FB5A2395979B00D99297 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C396FB5C2395979B00D99297 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -87,6 +89,7 @@
 				C396FB7D239623DC00D99297 /* Day3.swift */,
 				C396FB7F2396247B00D99297 /* day_3_a.txt */,
 				C396FB802396247B00D99297 /* day_3_b.txt */,
+				C3684682239774C4008976AF /* Day4.swift */,
 				C396FB5C2395979B00D99297 /* SceneDelegate.swift */,
 				C396FB5E2395979B00D99297 /* ContentView.swift */,
 				C396FB602395979D00D99297 /* Assets.xcassets */,
@@ -197,6 +200,7 @@
 				C396FB752395CD8B00D99297 /* Day2.swift in Sources */,
 				C396FB71239597D000D99297 /* Day1.swift in Sources */,
 				C396FB5B2395979B00D99297 /* AppDelegate.swift in Sources */,
+				C3684683239774C4008976AF /* Day4.swift in Sources */,
 				C36846812396BCB4008976AF /* Point.swift in Sources */,
 				C396FB5D2395979B00D99297 /* SceneDelegate.swift in Sources */,
 				C396FB7E239623DC00D99297 /* Day3.swift in Sources */,
