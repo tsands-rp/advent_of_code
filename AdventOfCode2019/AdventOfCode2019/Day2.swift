@@ -8,7 +8,6 @@
 
 import Foundation
 class Day2 {
-
     func main() {
         var memory:[Int] = []
         for char in day_2_input.split(separator: ",") {
@@ -21,7 +20,7 @@ class Day2 {
     func part1(input:[Int]) {
         let computer = Computer(input: input)
         computer.resetAndChangeInput(first: 12, second: 2)
-        let result = computer.run()
+        let result = computer.run(input: 0)
         print("🕹 Day 2 Part 1 Total: \(result)")
     }
     
@@ -30,7 +29,7 @@ class Day2 {
         for first in 0...99 {
             for second in 0...99 {
                 computer.resetAndChangeInput(first: first, second: second)
-                let result = computer.run()
+                let result = computer.run(input: 0)
                 if result == 19690720 {
                     print("🕹 Day 2 Part 2 Total: \(100*first + second)")
                     return

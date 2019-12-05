@@ -33,7 +33,7 @@ class Day4 {
                 passwordWorks += 1
             }
         }
-        print("😡 Day 4 Part 2 total Passwords: \(passwordWorks)") // 941, 940
+        print("😡 Day 4 Part 2 total Passwords: \(passwordWorks)")
     }
     
     func rule1(number:Int) -> Bool {

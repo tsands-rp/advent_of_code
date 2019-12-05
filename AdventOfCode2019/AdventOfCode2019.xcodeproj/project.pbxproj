@@ -10,6 +10,7 @@
 		C368467F2396BCA2008976AF /* SquareGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = C368467E2396BCA2008976AF /* SquareGrid.swift */; };
 		C36846812396BCB4008976AF /* Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36846802396BCB4008976AF /* Point.swift */; };
 		C3684683239774C4008976AF /* Day4.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3684682239774C4008976AF /* Day4.swift */; };
+		C36846852398D153008976AF /* Day5.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36846842398D153008976AF /* Day5.swift */; };
 		C396FB5B2395979B00D99297 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C396FB5A2395979B00D99297 /* AppDelegate.swift */; };
 		C396FB5D2395979B00D99297 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C396FB5C2395979B00D99297 /* SceneDelegate.swift */; };
 		C396FB5F2395979B00D99297 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C396FB5E2395979B00D99297 /* ContentView.swift */; };
@@ -25,12 +26,14 @@
 		C396FB7E239623DC00D99297 /* Day3.swift in Sources */ = {isa = PBXBuildFile; fileRef = C396FB7D239623DC00D99297 /* Day3.swift */; };
 		C396FB812396247C00D99297 /* day_3_a.txt in Resources */ = {isa = PBXBuildFile; fileRef = C396FB7F2396247B00D99297 /* day_3_a.txt */; };
 		C396FB822396247C00D99297 /* day_3_b.txt in Resources */ = {isa = PBXBuildFile; fileRef = C396FB802396247B00D99297 /* day_3_b.txt */; };
+		C3DFE68D2398D3D0001B0402 /* Day5_input.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DFE68C2398D3D0001B0402 /* Day5_input.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		C368467E2396BCA2008976AF /* SquareGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquareGrid.swift; sourceTree = "<group>"; };
 		C36846802396BCB4008976AF /* Point.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Point.swift; sourceTree = "<group>"; };
 		C3684682239774C4008976AF /* Day4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day4.swift; sourceTree = "<group>"; };
+		C36846842398D153008976AF /* Day5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day5.swift; sourceTree = "<group>"; };
 		C396FB572395979B00D99297 /* AdventOfCode2019.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AdventOfCode2019.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C396FB5A2395979B00D99297 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C396FB5C2395979B00D99297 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -48,6 +51,7 @@
 		C396FB7D239623DC00D99297 /* Day3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day3.swift; sourceTree = "<group>"; };
 		C396FB7F2396247B00D99297 /* day_3_a.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = day_3_a.txt; sourceTree = "<group>"; };
 		C396FB802396247B00D99297 /* day_3_b.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = day_3_b.txt; sourceTree = "<group>"; };
+		C3DFE68C2398D3D0001B0402 /* Day5_input.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day5_input.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +94,8 @@
 				C396FB7F2396247B00D99297 /* day_3_a.txt */,
 				C396FB802396247B00D99297 /* day_3_b.txt */,
 				C3684682239774C4008976AF /* Day4.swift */,
+				C36846842398D153008976AF /* Day5.swift */,
+				C3DFE68C2398D3D0001B0402 /* Day5_input.swift */,
 				C396FB5C2395979B00D99297 /* SceneDelegate.swift */,
 				C396FB5E2395979B00D99297 /* ContentView.swift */,
 				C396FB602395979D00D99297 /* Assets.xcassets */,
@@ -199,6 +205,8 @@
 				C396FB792395CE4C00D99297 /* Day2_input.swift in Sources */,
 				C396FB752395CD8B00D99297 /* Day2.swift in Sources */,
 				C396FB71239597D000D99297 /* Day1.swift in Sources */,
+				C36846852398D153008976AF /* Day5.swift in Sources */,
+				C3DFE68D2398D3D0001B0402 /* Day5_input.swift in Sources */,
 				C396FB5B2395979B00D99297 /* AppDelegate.swift in Sources */,
 				C3684683239774C4008976AF /* Day4.swift in Sources */,
 				C36846812396BCB4008976AF /* Point.swift in Sources */,
